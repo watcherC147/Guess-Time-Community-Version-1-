@@ -58,8 +58,8 @@ public class CardDisplay : MonoBehaviour
         else if(card is EffectCard) //Ð§¹û¿¨ÏÔÊ¾
         {
             var effect = card as EffectCard;
-            effectText.text=effect.effect;
             erosionAccumulationText.text= effect.effect.ToString();
+            effectText.text=effect.effect;
             healthText.gameObject.SetActive(false) ;
             erosionText.gameObject.SetActive(false ) ;
             luckyText.gameObject.SetActive(false ) ;

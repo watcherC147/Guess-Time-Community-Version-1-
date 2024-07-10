@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardStock : MonoBehaviour
+public class CardStore : MonoBehaviour
 {
     public TextAsset cardData;
     public List<Card> cardList =new List<Card>();
@@ -10,7 +10,7 @@ public class CardStock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LoadCardData();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class CardStock : MonoBehaviour
         {
             string[] rowArray = row.Split(',');
             if (rowArray[0] == "#") continue;
-            else if (rowArray[0] == "charactor") //角色卡
+            else if (rowArray[0] == "character") //角色卡
             {
                 int id = int.Parse(rowArray[1]);
                 string name = rowArray[2];
@@ -35,7 +35,7 @@ public class CardStock : MonoBehaviour
                 string skill = rowArray[6];
                 CharacterCard characterCard = new CharacterCard(id, name, health, erosion, lucky, skill);
                 cardList.Add(characterCard);
-                Debug.Log("读取到角色卡："+characterCard.cardName);
+                //Debug.Log("读取到角色卡："+characterCard.cardName);
             }
             else if (rowArray[0] == "basicAction") //基础卡
             {
@@ -45,13 +45,24 @@ public class CardStock : MonoBehaviour
                 int defense = int.Parse(rowArray[4]);
                 BasicActionCard basicActionCard= new BasicActionCard(id, name, damage, defense);
                 cardList.Add(basicActionCard);
-                Debug.Log("读取到基础卡："+basicActionCard.cardName);
+                //Debug.Log("读取到基础卡："+basicActionCard.cardName);
             }
-            else
+            else if (rowArray[0] =="effect") //效果卡
             {
-
+                int id = int.Parse(rowArray[1]);
+                string name = rowArray[2];
+                int erosionAccumulation = int.Parse(rowArray[3]);
+                string effect= rowArray[4];
+                EffectCard effectCard=new EffectCard(id,name, erosionAccumulation, effect);
+                cardList.Add(effectCard);
+                //Debug.Log("读取到效果卡："+effectCard.cardName);
             }
 
         }
     }
+    public Card RandomCard()
+    {
+        Card card = cardList[Random.Range(0,cardList.Count)];
+        return card;
+    } 
 }

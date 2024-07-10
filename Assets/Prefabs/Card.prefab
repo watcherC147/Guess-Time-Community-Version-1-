@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 786153049609843709}
   - component: {fileID: 1404228693993176684}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,15 +540,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c3c41c037909b47b33e714348cf80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameText: {fileID: 5165267915910937410}
-  HealthText: {fileID: 7367080646849056376}
-  ErosionText: {fileID: 4031697431337967092}
-  LuckyText: {fileID: 9067344743106354488}
-  SkillText: {fileID: 1537589043048467737}
-  DamageText: {fileID: 6813840528280961665}
-  DefenseText: {fileID: 6732845901731185313}
-  EffectText: {fileID: 1334847399910723884}
-  BackgroundImage: {fileID: 0}
+  nameText: {fileID: 0}
+  healthText: {fileID: 0}
+  erosionText: {fileID: 0}
+  luckyText: {fileID: 0}
+  skillText: {fileID: 0}
+  damageText: {fileID: 0}
+  defenseText: {fileID: 0}
+  effectText: {fileID: 0}
+  erosionAccumulationText: {fileID: 0}
+  backgroundImage: {fileID: 0}
 --- !u!1 &5840900885119529654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 124}
+  m_AnchoredPosition: {x: 0, y: 79}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8531863279975959352
@@ -1231,7 +1232,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: XYM
+  m_text: Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

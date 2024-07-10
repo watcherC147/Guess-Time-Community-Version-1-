@@ -38,9 +38,9 @@ public class EffectCard:Card
 {
     public string effect;
     public int erosionAccumulation;
-    public EffectCard(int _id,string _cardName,string _effect,int erosionAccumulation):base(_id,_cardName) 
+    public EffectCard(int _id,string _cardName,int erosionAccumulation,string _effect):base(_id,_cardName) 
     {
-        this.effect = _effect;
         this.erosionAccumulation = erosionAccumulation;
+        this.effect = _effect;
     }
 }
