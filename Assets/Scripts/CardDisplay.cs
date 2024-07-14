@@ -15,6 +15,8 @@ public class CardDisplay : MonoBehaviour
     public TextMeshProUGUI defenseText;
     public TextMeshProUGUI effectText;
     public TextMeshProUGUI erosionAccumulationText;
+    public TextMeshProUGUI noteText;
+    public TextMeshProUGUI typeText;
     public Image backgroundImage;
     public Card card;
     // Start is called before the first frame update
@@ -34,38 +36,26 @@ public class CardDisplay : MonoBehaviour
         if(card is CharacterCard ) //角色卡显示
         {
             var character = card as CharacterCard;
-            healthText.text=character.health.ToString();
-            erosionText.text=character.erosion.ToString();
-            luckyText.text=character.lucky.ToString();
-            skillText.text=character.skill;
-            damageText.gameObject.SetActive(false);
-            defenseText.gameObject.SetActive(false);
-            effectText.gameObject.SetActive(false);
-            erosionAccumulationText.gameObject.SetActive(false);
+            healthText.text = "血："+character.health.ToString();
+            erosionText.text="侵蚀："+character.erosion.ToString();
+            luckyText.text="幸运："+character.lucky.ToString();
+            skillText.text="技能："+character.skill;
         }
         else if(card is BasicActionCard) //基础卡显示
         {
             var basicAction = card as BasicActionCard;
-            damageText.text=basicAction.damage.ToString();
-            defenseText.text=basicAction.defense.ToString();
-            healthText.gameObject.SetActive(false);
-            erosionText.gameObject.SetActive(false);
-            luckyText.gameObject.SetActive(false);
-            skillText.gameObject.SetActive(false);
-            effectText.gameObject.SetActive (false);
-            erosionAccumulationText.gameObject .SetActive(false);
+            damageText.text = "伤害：" + basicAction.damage.ToString();
+            defenseText.text = "防御：" + basicAction.defense.ToString();
+            erosionAccumulationText.text=basicAction.erosionAccumulation.ToString();
+            noteText.text = basicAction.note;
         }
         else if(card is EffectCard) //效果卡显示
         {
             var effect = card as EffectCard;
-            erosionAccumulationText.text= effect.effect.ToString();
+            erosionAccumulationText.text= effect.erosionAccumulation.ToString();
+            typeText.text = "<" + effect.type + ">";
             effectText.text=effect.effect;
-            healthText.gameObject.SetActive(false) ;
-            erosionText.gameObject.SetActive(false ) ;
-            luckyText.gameObject.SetActive(false ) ;
-            skillText.gameObject.SetActive(false);
-            damageText.gameObject.SetActive(false);
-            defenseText.gameObject.SetActive(false);
+            noteText.text = effect.note;
         }
     }
 }

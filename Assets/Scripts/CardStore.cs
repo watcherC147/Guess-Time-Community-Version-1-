@@ -10,7 +10,7 @@ public class CardStore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadCardData();
+
     }
 
     // Update is called once per frame
@@ -35,7 +35,6 @@ public class CardStore : MonoBehaviour
                 string skill = rowArray[6];
                 CharacterCard characterCard = new CharacterCard(id, name, health, erosion, lucky, skill);
                 cardList.Add(characterCard);
-                //Debug.Log("读取到角色卡："+characterCard.cardName);
             }
             else if (rowArray[0] == "basicAction") //基础卡
             {
@@ -43,26 +42,30 @@ public class CardStore : MonoBehaviour
                 string name = rowArray[2];
                 int damage = int.Parse(rowArray[3]);
                 int defense = int.Parse(rowArray[4]);
-                BasicActionCard basicActionCard= new BasicActionCard(id, name, damage, defense);
+                int erosionAccumulation = int.Parse(rowArray[5]);
+                string note = rowArray[6];
+                BasicActionCard basicActionCard = new BasicActionCard(id, name, damage, defense, erosionAccumulation, note);
                 cardList.Add(basicActionCard);
-                //Debug.Log("读取到基础卡："+basicActionCard.cardName);
             }
             else if (rowArray[0] =="effect") //效果卡
             {
                 int id = int.Parse(rowArray[1]);
                 string name = rowArray[2];
                 int erosionAccumulation = int.Parse(rowArray[3]);
-                string effect= rowArray[4];
-                EffectCard effectCard=new EffectCard(id,name, erosionAccumulation, effect);
+                string type=rowArray[4];
+                string effect= rowArray[5];
+                string note= rowArray[6];
+                EffectCard effectCard = new EffectCard(id, name, erosionAccumulation, type,effect, note);
                 cardList.Add(effectCard);
-                //Debug.Log("读取到效果卡："+effectCard.cardName);
             }
 
         }
     }
     public Card RandomCard()
     {
-        Card card = cardList[Random.Range(0,cardList.Count)];
+        Card card;
+        card = cardList[Random.Range(0, cardList.Count)];
         return card;
+        //error:牌库没牌会报错，记得修！
     } 
 }
